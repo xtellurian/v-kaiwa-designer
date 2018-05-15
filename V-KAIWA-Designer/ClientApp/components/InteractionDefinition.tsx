@@ -34,16 +34,24 @@ export class InteractionDefinition extends React.Component<RouteComponentProps<{
         event.preventDefault();
     }
 
+    downloadDataAsJson() {
+        var data = new Blob([JSON.stringify({ npcs: this.state.npcList })], { type: 'application/json' });
+        var csvURL = window.URL.createObjectURL(data);
+        window.open(csvURL);
+    }
+
     listItems() {
-        return this.state.npcList.map((n) => <NpcComponent key={n.name} npc={n} />);
+        return this.state.npcList.map((n) => <NpcComponent key={n.name} npc={n} updateNpc={
+            (newNpc) => this.setState(s => ({ npcList: [...s.npcList, newNpc] }))
+        } />);
     }
 
     npcList(): JSX.Element {
         let options: JSX.Element[] = AvailableNpcs.map((npc) => {
-            return <option value={npc}>{npc}</option>;
+            return <option key={npc} value={npc}>{npc}</option>;
         });
         return (<select value={this.state.newNpcName} onChange={(e) => this.handleChangeNewNpcName(e)}>
-            <option value=''></option>
+            <option key='' value=''></option>
             {options}
         </select>);
     }
@@ -62,7 +70,7 @@ export class InteractionDefinition extends React.Component<RouteComponentProps<{
                 </form>
                 
                 {this.listItems()}
-
+                <button onClick={() => this.downloadDataAsJson()}> Download as JSON </button>
             </div>
         );
     }
