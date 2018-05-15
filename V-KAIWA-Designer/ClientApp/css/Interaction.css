@@ -1,0 +1,23 @@
+﻿body {
+
+}
+
+
+.NpcContainer {
+    border: solid;
+    margin: 10px;
+}
+
+.NpcContainer > h3 {
+    color: black;
+    background-color: lightblue;
+}
+
+.IntentContainer {
+    border: dashed;
+    margin: 5px;
+}
+
+.InteractionContainer {
+
+}
