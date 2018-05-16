@@ -1,17 +1,28 @@
 ﻿
+.interaction-container {
+    align-content: center;
+}
+
 .NpcContainer {
     border: solid;
     margin: 10px;
+    padding: 2px;
 }
 
-    .NpcContainer > h3 {
-        color: black;
-        background-color: lightblue;
-    }
+.NpcContainer > h3 {
+    color: black;
+    background-color: lightblue;
+}
 
 .IntentContainer {
     border: dashed;
     margin: 5px;
+    padding: 3px;
+}
+
+.IntentContainer li {
+    margin-left: 5px;
+    
 }
 
 .destroy-button {
@@ -21,7 +32,6 @@
 
 .download-button {
     width: 100%;
-    margin: 10px;
     background-color: aliceblue;
 }
 

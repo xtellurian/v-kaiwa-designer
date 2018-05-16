@@ -83,7 +83,7 @@ export class InteractionDefinition extends React.Component<RouteComponentProps<{
 
     render() {
         return (
-            <div className='InteractionContainer'>
+            <div className='interaction-container'>
                 <h2> V-KAIWA Interaction Definition</h2>
                 <p> Choose an NPC, pick which intents it responds to, and write responses for those intents.</p>
                 <form className='form-style' onSubmit={(e) => this.handleSubmitNewNpc(e)}>
