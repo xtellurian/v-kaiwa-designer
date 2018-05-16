@@ -18,6 +18,19 @@
     margin: 5px;
 }
 
-.InteractionContainer {
+.InteractionContainer button {
+    width:100%;
+    margin: 10px;
+    background-color: aliceblue;
+}
 
+.form-style input {
+    width: 40%;
+    background-color: azure;
+    margin-left: 10px;
+}
+
+
+
+.InteractionContainer {
 }

@@ -32,7 +32,7 @@ export class IntentComponent extends React.Component<{intent: Intent, updateInte
     }
 
     listResponses() {
-        return this.props.intent.responses.map((response) => <li>{response}</li>);
+        return this.props.intent.responses.map((response) => <li key={response}>{response}</li>);
     }
 
     render(): JSX.Element {

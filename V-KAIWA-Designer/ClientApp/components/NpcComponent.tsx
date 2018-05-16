@@ -1,21 +1,27 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router';
 import { IntentComponent } from './IntentComponent';
-import { NPC, Intent, AvailableIntents } from '../model/DataModels';
+import { NPC, Intent } from '../model/DataModels';
 
 interface NpcEditState {
     newIntentName: string;
+    intents: string[];
+    loading: boolean;
 }
 
 export class NpcComponent extends React.Component<{npc: NPC, updateNpc: (npc:NPC) => void}, NpcEditState> {
 
     constructor(props: any) {
         super();
-        this.state = {newIntentName: ''};
-
+        this.state = { newIntentName: '', intents: [], loading: true};
         this.handleChangeNewIntentName.bind(this);
         this.handleSubmitNewIntent.bind(this);
         this.handleChildIntentUpdated.bind(this);
+        fetch(`api/intent/names/${props.npc.name}`)
+            .then(response => response.json() as Promise<string[]>)
+            .then(data => {
+                this.setState({ intents: data, loading: false });
+            });
     }
 
     handleChangeNewIntentName(event: any) {
@@ -24,7 +30,7 @@ export class NpcComponent extends React.Component<{npc: NPC, updateNpc: (npc:NPC
 
     handleSubmitNewIntent(event: any) {
         if (this.state.newIntentName && !this.props.npc.respondsTo.some(r => r.name === this.state.newIntentName)) {
-            console.log(`Adding Intent [name=${this.state.newIntentName}] to NPC: ${this.props.npc.name}`);
+            console.log(`Adding Intent [${this.state.newIntentName}] to NPC [${this.props.npc.name}]`);
             let intentName = this.state.newIntentName;
             this.setState({ newIntentName: '' });
             let newNpc = this.props.npc;
@@ -54,7 +60,7 @@ export class NpcComponent extends React.Component<{npc: NPC, updateNpc: (npc:NPC
     }
 
     availableIntents(): JSX.Element {
-        let options: JSX.Element[] = AvailableIntents.map((intent) => {
+        let options: JSX.Element[] = this.state.intents.map((intent) => {
             return <option key={intent} value={intent}>{intent}</option>;
         });
         return (<select value={this.state.newIntentName} onChange={(e) => this.handleChangeNewIntentName(e)}>
