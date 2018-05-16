@@ -59,9 +59,11 @@ export class InteractionDefinition extends React.Component<RouteComponentProps<{
         } />);
     }
 
-    npcList(): JSX.Element {
-        let options: JSX.Element[] = this.state.npcNames.map((npc) => {
-            return <option key={npc} value={npc}>{npc}</option>;
+    npcOptionsList(): JSX.Element {
+        let options = this.state.npcNames.map((name) => {
+            if (! this.state.npcList.some(n => n.name === name)) {
+                return <option key={name} value={name}>{name}</option>;
+            }
         });
         return (<select value={this.state.newNpcName} onChange={(e) => this.handleChangeNewNpcName(e)}>
             <option key='' value=''></option>
@@ -77,7 +79,7 @@ export class InteractionDefinition extends React.Component<RouteComponentProps<{
                 <form className='form-style' onSubmit={(e) => this.handleSubmitNewNpc(e)}>
                     <label>
                         NPC:
-                        {this.npcList()}
+                        {this.npcOptionsList()}
                     </label>
                 <input type="submit" value="Add NPC" />
                 </form>

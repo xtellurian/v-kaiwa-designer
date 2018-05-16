@@ -19,8 +19,35 @@ namespace V_KAIWA_Designer.Controllers
         {
             return new List<string>
             {
-                "Name1",
-                "Name2"
+                "Biker",
+                "Fast food guy",
+                "Fire fighter",
+                "Gamer girl",
+                "Gangster",
+                "Grandma",
+                "Grandpa",
+                "Hipster",
+                "Girl",
+                "Hipster guy",
+                "hobo",
+                "hotdog guy",
+                "Jock",
+                "Paramedic",
+                "Punk girl",
+                "Punk guy",
+                "Road worker",
+                "Shop Keeper",
+                "Summer girl",
+                "Tourist",
+                "Business man",
+                "Dad",
+                "Business woman",
+                "Woman in coat",
+                "woman in jacket",
+                "Police woman",
+                "Police man",
+                "Hoodie male",
+                "Jacket male"
             };
         }
     }
