@@ -29,6 +29,8 @@ v8.11.2
 
 ## Development
 
+Clone this repository: `git clone https://github.com/xtellurian/v-kaiwa-designer`
+
 ### Visual Studio 2017
 
  - Open V-KAIWA-Designer.sln
@@ -51,10 +53,10 @@ v8.11.2
 
 ### Creating a docker image on docker hub
 
-1. Clone this repository, `git clone https://github.com/xtellurian/v-kaiwa-designer`
+1. Fork this repository
 2. Go to [dockerhub](https://cloud.docker.com) and sign up if necessary
 3. [Link](https://docs.docker.com/docker-hub/github/) your GitHub account to your docker account. 
-4. [Create a new repo](https://docs.docker.com/docker-hub/repos/) on dockerhub, and link to the GitHub repo you cloned.
+4. [Create a new repo](https://docs.docker.com/docker-hub/repos/) on dockerhub, and link to the GitHub repo you forked.
 5. [Create an automated build](https://docs.docker.com/docker-hub/github/#creating-an-automated-build).
 6. Dockerhub will now build an image of the tool for youo.
 
