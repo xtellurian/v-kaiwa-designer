@@ -1,6 +1,15 @@
 # V-KAIWA Designer
 
-## Set up
+V-KAIWA designer is build using [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/) and [ReactJS](https://reactjs.org/)
+
+![A screenshot of V-KAIWA Designer](images/designer_screenshot.png)
+
+## Set up your Development Environment
+
+### Install Visual Studio 2017 with Dotnet Core
+
+ - [Download](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio) VS2017 and install.
+ - Install the Cross Platform .NET tools including DotNet Core and ASP.NET Core
 
 ### Using NVS for NodeJS
 
