@@ -24,7 +24,7 @@ export class NavMenu extends React.Component<{}, {}> {
                         </li>
                         <li>
                             <NavLink to={'/interactiondefinition'} activeClassName='active'>
-                                <span className='glyphicon glyphicon-education'></span> Interaction Definition
+                                <span className='glyphicon glyphicon-education'></span> Conversation Designer
                             </NavLink>
                         </li>
                     </ul>
