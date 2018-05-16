@@ -6,6 +6,12 @@
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Product>V-KAIWA-Designer</Product>
+    <Company>V-KAIWA</Company>
+    <Authors>Rian Finnegan</Authors>
   </PropertyGroup>
 
   <ItemGroup>

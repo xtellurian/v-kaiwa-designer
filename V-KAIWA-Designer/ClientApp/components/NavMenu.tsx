@@ -1,8 +1,23 @@
 import * as React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-export class NavMenu extends React.Component<{}, {}> {
+export class NavMenu extends React.Component<{}, {version: string}> {
+
+    constructor() {
+        super();
+
+        this.state ={ version: '...' };
+
+        fetch('api/version')
+            .then(response => response.text() as Promise<string>)
+            .then(data => {
+                this.setState({ version: data });
+            });
+    }
+
     public render() {
+        console.log(this.state);
+        let version =  this.state.version;
         return <div className='main-nav'>
                 <div className='navbar navbar-inverse'>
                 <div className='navbar-header'>
@@ -28,6 +43,9 @@ export class NavMenu extends React.Component<{}, {}> {
                             </NavLink>
                         </li>
                     </ul>
+                    <div className='version-info'>
+                        <p>V:{version}</p>
+                    </div>
                 </div>
             </div>
         </div>;
