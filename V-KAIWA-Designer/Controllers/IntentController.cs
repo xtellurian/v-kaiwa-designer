@@ -26,8 +26,9 @@ namespace V_KAIWA_Designer.Controllers
         {
             return new List<string>
             {
-                "Intent1",
-                "Intent2"
+                "HelpMe",
+                "AskForItem",
+                "GiveItem"
             };
         }
     }
