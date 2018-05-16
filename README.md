@@ -58,7 +58,7 @@ Clone this repository: `git clone https://github.com/xtellurian/v-kaiwa-designer
 3. [Link](https://docs.docker.com/docker-hub/github/) your GitHub account to your docker account. 
 4. [Create a new repo](https://docs.docker.com/docker-hub/repos/) on dockerhub, and link to the GitHub repo you forked.
 5. [Create an automated build](https://docs.docker.com/docker-hub/github/#creating-an-automated-build).
-6. Dockerhub will now build an image of the tool for youo.
+6. Dockerhub will now build an image of the tool for you.
 
 ### Deploy to an Azure Web App
 
