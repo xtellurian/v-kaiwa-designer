@@ -9,7 +9,7 @@ interface NpcEditState {
     loading: boolean;
 }
 
-export class NpcComponent extends React.Component<{npc: NPC, updateNpc: (npc:NPC) => void}, NpcEditState> {
+export class NpcComponent extends React.Component<{npc: NPC, updateNpc: (npc:NPC) => void, destroy: ()=>void}, NpcEditState> {
 
     constructor(props: any) {
         super();
@@ -72,7 +72,8 @@ export class NpcComponent extends React.Component<{npc: NPC, updateNpc: (npc:NPC
     render(): JSX.Element { 
         return (
             <div className='NpcContainer'>
-                <h3>{this.props.npc.name} </h3>
+                <button className='destroy-button' onClick={() => this.props.destroy()}> X </button>
+                <h3>{this.props.npc.name}</h3> 
                 <p>{this.props.npc.respondsTo.length} Intents</p>
                 <form className='form-group' onSubmit={(e) => this.handleSubmitNewIntent(e)}>
                 <label>
@@ -83,7 +84,7 @@ export class NpcComponent extends React.Component<{npc: NPC, updateNpc: (npc:NPC
                 </form>
 
                 {this.listIntents()}
-
+                
             </div>
         );
     }

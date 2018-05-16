@@ -18,8 +18,13 @@
     margin: 5px;
 }
 
-.InteractionContainer button {
-    width:100%;
+.destroy-button {
+    float: right;
+    position:relative;
+}
+
+.download-button {
+    width: 100%;
     margin: 10px;
     background-color: aliceblue;
 }

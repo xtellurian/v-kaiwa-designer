@@ -53,10 +53,20 @@ export class InteractionDefinition extends React.Component<RouteComponentProps<{
         tempLink.click();
     }
 
-    listItems() {
-        return this.state.npcList.map((n) => <NpcComponent key={n.name} npc={n} updateNpc={
-            (newNpc) => this.setState(s => ({ npcList: [...s.npcList, newNpc] }))
-        } />);
+    listOfAddedNpcs() {
+        return this.state.npcList.map((n) => <NpcComponent key={n.name} npc={n}
+            updateNpc={
+                (newNpc) => this.setState(s => ({ npcList: [...s.npcList, newNpc] }))
+            } destroy={() => {
+                this.setState(s => {
+                    let array = s.npcList;
+                    let pos = s.npcList.map((e) => e.name).indexOf(n.name); // get pos of NPC in array
+                    if (pos > -1) {
+                        array.splice(pos, 1);
+                    }
+                })
+            }}
+        />);
     }
 
     npcOptionsList(): JSX.Element {
@@ -84,8 +94,8 @@ export class InteractionDefinition extends React.Component<RouteComponentProps<{
                 <input type="submit" value="Add NPC" />
                 </form>
                 
-                {this.listItems()}
-                <button onClick={() => this.downloadDataAsJson()}> Download as JSON </button>
+                {this.listOfAddedNpcs()}
+                <button className='download-button' onClick={() => this.downloadDataAsJson()}> Download as JSON </button>
                 <br/>
             </div>
         );
