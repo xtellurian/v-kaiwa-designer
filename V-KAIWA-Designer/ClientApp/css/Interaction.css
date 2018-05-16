@@ -1,8 +1,4 @@
-﻿body {
-
-}
-
-
+﻿
 .NpcContainer {
     border: solid;
     margin: 10px;
@@ -33,9 +29,4 @@
     width: 40%;
     background-color: azure;
     margin-left: 10px;
-}
-
-
-
-.InteractionContainer {
 }
