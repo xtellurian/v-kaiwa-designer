@@ -1,6 +1,6 @@
 # V-KAIWA Designer
 
-V-KAIWA designer is build using [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/) and [ReactJS](https://reactjs.org/)
+V-KAIWA designer is made with [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/) and [ReactJS](https://reactjs.org/)
 
 ![A screenshot of V-KAIWA Designer](images/designer_screenshot.png)
 
