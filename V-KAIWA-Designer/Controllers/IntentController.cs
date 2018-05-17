@@ -26,9 +26,12 @@ namespace V_KAIWA_Designer.Controllers
         {
             return new List<string>
             {
+                "Greeting",
                 "HelpMe",
                 "AskForItem",
-                "GiveItem"
+                "GiveItem",
+                "Yes",
+                "No"
             };
         }
     }
