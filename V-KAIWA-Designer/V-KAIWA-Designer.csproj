@@ -12,6 +12,7 @@
     <Product>V-KAIWA-Designer</Product>
     <Company>V-KAIWA</Company>
     <Authors>Rian Finnegan</Authors>
+    <RootNamespace>V_KAIWA_Designer</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

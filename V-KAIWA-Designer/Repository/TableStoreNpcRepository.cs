@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace V_KAIWA_Designer.Repository
 {
-    public class TableStoreIntentRepository : IIntentRepository
+    public class TableStoreNpcRepository : INpcRepository
     {
         public bool IsAvailable { get; private set; }
 
@@ -15,32 +15,31 @@ namespace V_KAIWA_Designer.Repository
         private string _tableName;
         private CloudStorageAccount _storageAccount;
 
-        public TableStoreIntentRepository()
+        public TableStoreNpcRepository()
         {
             // these come from App Settings
             _connectionString = Program.Configuration["Storage:ConnectionString"];
-            _tableName = Program.Configuration["Storage:IntentTableName"] ;
-        
-            IsAvailable = ! string.IsNullOrEmpty(_connectionString) && !string.IsNullOrEmpty(_tableName); 
-            if(IsAvailable) _storageAccount = CloudStorageAccount.Parse(_connectionString);
+            _tableName = Program.Configuration["Storage:NpcTableName"];
+
+            IsAvailable = ! string.IsNullOrEmpty(_connectionString) && !string.IsNullOrEmpty(_tableName);
+            if (IsAvailable) _storageAccount = CloudStorageAccount.Parse(_connectionString);
         }
 
-
-        async Task<IEnumerable<string>> IIntentRepository.GetIntents()
+        async Task<IEnumerable<string>> INpcRepository.GetNpcNames()
         {
             // get from table storage
             var tableClient = _storageAccount.CreateCloudTableClient();
             var table = tableClient.GetTableReference(_tableName);
-            var query = new TableQuery<IntentTableEntity>();
+            var query = new TableQuery<NpcTableEntity>();
             TableContinuationToken token = null; // if there's more than 1000 rows in the table, this will need to be checked
             var queryResult = await table.ExecuteQuerySegmentedAsync(query, token);
             var result = queryResult.ToList();
 
             return result.Select(s => s.Name);
         }
-    }
 
-    public class IntentTableEntity : TableEntity
+    }
+    class NpcTableEntity : TableEntity
     {
         public string Name { get; set; }
     }

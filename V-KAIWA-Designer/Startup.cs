@@ -26,6 +26,7 @@ namespace V_KAIWA_Designer
             services.AddMvc();
 
             services.AddTransient<IIntentRepository, TableStoreIntentRepository>();
+            services.AddTransient<INpcRepository, TableStoreNpcRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

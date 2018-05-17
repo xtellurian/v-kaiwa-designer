@@ -3,21 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using V_KAIWA_Designer.Repository;
 
 namespace V_KAIWA_Designer.Controllers
 {
     [Route("api/[controller]")]
     public class NpcController : Controller
     {
-        [HttpGet("names")]
-        public IEnumerable<string> Names()
+        private readonly INpcRepository repo;
+
+        public NpcController(INpcRepository repo)
         {
-            return LoadNpcNames();
+            this.repo = repo;
         }
 
-        private List<string> LoadNpcNames()
+        [HttpGet("names")]
+        public async Task<IEnumerable<string>> NamesAsync()
         {
-            return new List<string>
+            return await LoadNpcNamesAsync();
+        }
+
+        private async Task<IEnumerable<string>> LoadNpcNamesAsync()
+        {
+            if(repo.IsAvailable)
+            {
+                return await repo.GetNpcNames();
+            }
+            else
+            {
+                return new List<string>
             {
                 "Biker",
                 "Fast food guy",
@@ -49,6 +63,7 @@ namespace V_KAIWA_Designer.Controllers
                 "Hoodie male",
                 "Jacket male"
             };
+            }
         }
     }
 }
