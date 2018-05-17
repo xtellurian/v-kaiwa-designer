@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using V_KAIWA_Designer.Repository;
 
 namespace V_KAIWA_Designer
 {
@@ -23,6 +24,8 @@ namespace V_KAIWA_Designer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddTransient<IIntentRepository, TableStoreIntentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

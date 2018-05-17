@@ -3,36 +3,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using V_KAIWA_Designer.Repository;
 
 namespace V_KAIWA_Designer.Controllers
 {
     [Route("api/[controller]")]
     public class IntentController : Controller
     {
+        private readonly IIntentRepository repo;
 
-        [HttpGet("names")]
-        public IEnumerable<string> IntentNames()
+        public IntentController(IIntentRepository repo)
         {
-            return LoadIntents();
+            this.repo = repo;
+        }
+        [HttpGet("names")]
+        public async Task<IEnumerable<string>> IntentNamesAsync()
+        {
+            return await LoadIntentsAsync();
         }
 
         [HttpGet("names/{npcName}")]
-        public IEnumerable<string> GetQuery(string npcName)
+        public async Task<IEnumerable<string>> GetQueryAsync(string npcName)
         {
-            return LoadIntents();
+            return await LoadIntentsAsync();
         }
 
-        private List<string> LoadIntents()
+        private async Task<IEnumerable<string>> LoadIntentsAsync()
         {
-            return new List<string>
+            if (repo.IsAvailable)
             {
-                "Greeting",
-                "HelpMe",
-                "AskForItem",
-                "GiveItem",
-                "Yes",
-                "No"
-            };
+                return await repo.GetIntents();
+            }
+            else
+            {
+                return new List<string>
+                {
+                    "Greeting",
+                    "HelpMe",
+                    "AskForItem",
+                    "GiveItem",
+                    "Yes",
+                    "No"
+                };
+            }
         }
     }
 }
