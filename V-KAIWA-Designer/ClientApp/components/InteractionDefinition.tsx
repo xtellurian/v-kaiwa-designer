@@ -49,7 +49,7 @@ export class InteractionDefinition extends React.Component<RouteComponentProps<{
 
         let tempLink = document.createElement('a');
         tempLink.href = csvURL;
-        tempLink.setAttribute('download', 'conversation-definition.json');
+        tempLink.setAttribute('download', 'conversation-definition.txt');
         tempLink.click();
     }
 
