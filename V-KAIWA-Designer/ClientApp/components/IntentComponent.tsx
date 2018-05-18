@@ -24,7 +24,7 @@ function onlyUnique(value:any, index:number, self:any) {
     return self.indexOf(value) === index;
 }
 
-export class IntentComponent extends React.Component<{intent: Intent, updateIntent: (intent: Intent)=> void }, IntentEditState> {
+export class IntentComponent extends React.Component<{ intent: Intent, updateIntent: (intent: Intent) => void, destroy: () => void }, IntentEditState> {
 
     constructor(props: any) {
         super();
@@ -119,6 +119,7 @@ export class IntentComponent extends React.Component<{intent: Intent, updateInte
         let placeholder = { placeholder: 'Entity Name' };
         return (
             <div className='IntentContainer'>
+                <button className='destroy-button' onClick={() => this.props.destroy()}> X </button>
                 <h4>{this.props.intent.name} </h4>
                 <p> Required Entities (nouns)
                 <TagsInput value={this.props.intent.requiredEntities}

@@ -57,6 +57,16 @@ export class NpcComponent extends React.Component<{npc: NPC, updateNpc: (npc:NPC
         let intents = this.props.npc.respondsTo;
         return intents.map((i) => <IntentComponent key={i.name} intent={i} updateIntent={
             (updatedIntent) => this.handleChildIntentUpdated(updatedIntent)}
+            destroy={() => {
+                let array = this.props.npc.respondsTo;
+                let pos = this.props.npc.respondsTo.map((e) => e.name).indexOf(i.name); // get pos of NPC in array
+                if (pos > -1) {
+                    array.splice(pos, 1);
+                    let newNpc = this.props.npc;
+                    newNpc.respondsTo = array;
+                    this.props.updateNpc(newNpc);
+                }
+            }}
         />);
     }
 
