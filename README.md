@@ -104,7 +104,8 @@ The web app looks for a connection string and table names in order to read from 
 Add three App Settings:
 
  - *Storage:ConnectionString* = The connection string copied from the Azure Storage Account > Access Keys blade
- - *Storage:IntentTableName* = The name of the table you chose for intents
- - *Storage:NpcTableName* = The name of the table you chose for NPCs
+ - *Storage:IntentTableName* = The name of the table for intents
+ - *Storage:NpcTableName* = The name of the table for NPCs
+ - *Storage:EntityTableName* = The name of the table for Entities
 
 Now you can add/ remove Intents and NPCs using the Azure Storage Explorer, and the website should update instantly.

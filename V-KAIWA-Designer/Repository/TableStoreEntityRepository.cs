@@ -1,5 +1,4 @@
-﻿using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Table;
+﻿using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace V_KAIWA_Designer.Repository
 {
-    public class TableStoreIntentRepository : TableStoreRepository<IntentTableEntity>, IIntentRepository
+    public class TableStoreEntityRepository: TableStoreRepository<LuisEntityTableEntity> , IEntityRepository
     {
-        public TableStoreIntentRepository() : base("Storage:IntentTableName")
+        public TableStoreEntityRepository(): base("Storage:EntityTableName")
         {
         }
 
-
-        async Task<IEnumerable<string>> IIntentRepository.GetIntents()
+        async Task<IEnumerable<string>> IEntityRepository.GetEntities()
         {
-            // get from table storage
             var tableClient = StorageAccount.CreateCloudTableClient();
             var table = tableClient.GetTableReference(TableName);
-            var query = new TableQuery<IntentTableEntity>();
+            var query = new TableQuery<LuisEntityTableEntity>();
             TableContinuationToken token = null; // if there's more than 1000 rows in the table, this will need to be checked
             var queryResult = await table.ExecuteQuerySegmentedAsync(query, token);
             var result = queryResult.ToList();
@@ -28,7 +25,7 @@ namespace V_KAIWA_Designer.Repository
         }
     }
 
-    public class IntentTableEntity : TableEntity
+    public class LuisEntityTableEntity : TableEntity
     {
         public string Name { get; set; }
     }

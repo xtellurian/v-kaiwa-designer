@@ -7,29 +7,17 @@ using System.Threading.Tasks;
 
 namespace V_KAIWA_Designer.Repository
 {
-    public class TableStoreNpcRepository : INpcRepository
+    public class TableStoreNpcRepository : TableStoreRepository<NpcTableEntity>, INpcRepository
     {
-        public bool IsAvailable { get; private set; }
-
-        private string _connectionString;
-        private string _tableName;
-        private CloudStorageAccount _storageAccount;
-
-        public TableStoreNpcRepository()
+        public TableStoreNpcRepository() : base("Storage:NpcTableName")
         {
-            // these come from App Settings
-            _connectionString = Program.Configuration["Storage:ConnectionString"];
-            _tableName = Program.Configuration["Storage:NpcTableName"];
-
-            IsAvailable = ! string.IsNullOrEmpty(_connectionString) && !string.IsNullOrEmpty(_tableName);
-            if (IsAvailable) _storageAccount = CloudStorageAccount.Parse(_connectionString);
         }
 
         async Task<IEnumerable<string>> INpcRepository.GetNpcNames()
         {
             // get from table storage
-            var tableClient = _storageAccount.CreateCloudTableClient();
-            var table = tableClient.GetTableReference(_tableName);
+            var tableClient = StorageAccount.CreateCloudTableClient();
+            var table = tableClient.GetTableReference(TableName);
             var query = new TableQuery<NpcTableEntity>();
             TableContinuationToken token = null; // if there's more than 1000 rows in the table, this will need to be checked
             var queryResult = await table.ExecuteQuerySegmentedAsync(query, token);
@@ -39,7 +27,7 @@ namespace V_KAIWA_Designer.Repository
         }
 
     }
-    class NpcTableEntity : TableEntity
+    public class NpcTableEntity : TableEntity
     {
         public string Name { get; set; }
     }
