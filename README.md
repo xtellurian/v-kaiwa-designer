@@ -37,6 +37,10 @@ Clone this repository: `git clone https://github.com/xtellurian/v-kaiwa-designer
  - Right-click the V-KAIWA-Designer project and select 'Set as startup project'
  - Run the project in debug mode using F5 - you should run debug mode with IIS, as the docker image doesn't support NodeJS for hot reloads.
 
+
+### Intents and NPC names during development
+
+The easist way to develop is by using the static list of names in `IntentController` and `NpcController`. If the table name or the connection string is not set in application settings, the app will revert to using those names.
  
 #### Troubleshooting
 
@@ -65,3 +69,42 @@ Clone this repository: `git clone https://github.com/xtellurian/v-kaiwa-designer
 1. Go to the [Azure Portal](https://portal.azure.com) and sign up if required.
 2. Create a [Web App for Containers](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image).
 3. Configure the container by choosing the image from Dockerhub <your-docker-username>/vkaiwadesigner:latest
+
+
+## Configuring Azure Table Storage
+
+Intents and Npcs can be provided to the application from Azure Table Storage. 
+
+*Important!!!* : Do NOT include connection strings in your git repository. Connection string should always remain secret.  
+
+### Setting up an Azure Storage Account
+
+ 1. In the [Azure Portal](https://portal.azure.com) create an [Azure Storage Account)[https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account] V1
+ 2. When complete, copy and temporarily save the connection string in the 'Access Keys' tab of the Storage Account in the Portal.
+
+### Adding Intents and NPCs
+
+ 1. [Download](https://azure.microsoft.com/en-gb/features/storage-explorer/) and install Azure Storage Explorer.
+ 2. Open Storage Explorer and sign in with your MS Account (the same as your Azure Portal account)
+ 3. You should see the storage account you created earlier under your subscription > Storage Accounts.
+ 3. Right-click on 'Tables' and 'Create Table'. You should create one table for NPCs and one for Intents.
+ 4. Select a table, and Add Entity by clicking the large + button in the ribbon.
+ 5. Keep the partition key the same for all intents, and number the row key incrememntally (1,2,3...). [Learn More](https://docs.microsoft.com/en-us/rest/api/storageservices/understanding-the-table-service-data-model) 
+ 6. Add a Name (string) property to your entity. This is the name of the NPC or Intent. 
+ 7. Repeat for as many entities as you like. It should look similar to below.
+
+![A screenshot of Azure Storage Explorer showing the data model](images/storage-explorer-screenshot.png)
+
+### Configuring the website to use the Storage Account
+
+The web app looks for a connection string and table names in order to read from the Azure Tables. You should provide them via [Application Settings](https://docs.microsoft.com/en-us/azure/app-service/web-sites-configure)
+
+![Screenshot of Azure Portal Application Settings](images/azure-appsettings-screenshot.png)
+
+Add three App Settings:
+
+ - *Storage:ConnectionString* = The connection string copied from the Azure Storage Account > Access Keys blade
+ - *Storage:IntentTableName* = The name of the table you chose for intents
+ - *Storage:NpcTableName* = The name of the table you chose for NPCs
+
+Now you can add/ remove Intents and NPCs using the Azure Storage Explorer, and the website should update instantly.
