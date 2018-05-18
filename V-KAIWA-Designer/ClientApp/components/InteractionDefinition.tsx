@@ -10,6 +10,10 @@ interface InteractionDefinitionState {
     loading: boolean;
 }
 
+function onlyUnique(value: any, index: number, self: any) {
+    return self.indexOf(value) === index;
+}
+
 export class InteractionDefinition extends React.Component<RouteComponentProps<{}>, InteractionDefinitionState> {
 
     constructor() {
@@ -36,7 +40,8 @@ export class InteractionDefinition extends React.Component<RouteComponentProps<{
             let newNpc: NPC = { name: this.state.newNpcName, respondsTo: [] };
 
             this.setState(s => ({
-                npcList: [...s.npcList, newNpc]
+
+                npcList: [...s.npcList, newNpc].filter(onlyUnique)
             }));
             this.setState({ newNpcName: '' });
         }
@@ -56,7 +61,19 @@ export class InteractionDefinition extends React.Component<RouteComponentProps<{
     listOfAddedNpcs() {
         return this.state.npcList.map((n) => <NpcComponent key={n.name} npc={n}
             updateNpc={
-                (newNpc) => this.setState(s => ({ npcList: [...s.npcList, newNpc] }))
+                (npc) => {
+                    let pos = this.state.npcList.map((e) => e.name).indexOf(n.name); // get pos of npc in array
+                    if (pos > -1) {
+                        this.setState(s => {
+                            let newList = s.npcList;
+                            newList[pos] = npc;
+                            return { npcList: newList };
+                        })
+                    } else {
+                        // add a new npc --> not possible?
+                    }
+                    
+                }
             } destroy={() => {
                 this.setState(s => {
                     let array = s.npcList;

@@ -34,7 +34,7 @@ export class NpcComponent extends React.Component<{npc: NPC, updateNpc: (npc:NPC
             let intentName = this.state.newIntentName;
             this.setState({ newIntentName: '' });
             let newNpc = this.props.npc;
-            newNpc.respondsTo = [...this.props.npc.respondsTo, { name: intentName, responses: [] }];
+            newNpc.respondsTo = [...this.props.npc.respondsTo, { name: intentName, responses: [], requiredEntities:[] }];
         }
         event.preventDefault();
     }
@@ -47,7 +47,8 @@ export class NpcComponent extends React.Component<{npc: NPC, updateNpc: (npc:NPC
             if (pos > -1) {
                 let newNpc = this.props.npc;
                 newNpc.respondsTo[pos] = updatedIntent;
-                this.setState(s => ({ npc: newNpc }));
+                this.props.updateNpc(newNpc);
+                // this.setState(s => ({ npc: newNpc}));
             }
         }
     }

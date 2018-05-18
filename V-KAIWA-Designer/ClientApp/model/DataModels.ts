@@ -8,7 +8,7 @@ export interface NPC {
 export interface Intent {
     name: string;
     responses: string[];
-    requiredEntities?: string[];
+    requiredEntities: string[];
 }
 
 export const AvailableIntents: string[] = ['HelpMe', 'GiveItem', 'AskForItem'];
