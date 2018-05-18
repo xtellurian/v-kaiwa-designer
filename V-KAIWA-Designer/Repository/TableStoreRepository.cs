@@ -18,7 +18,7 @@ namespace V_KAIWA_Designer.Repository
         protected TableStoreRepository(string tableName)
         {
             // these come from App Settings
-            _connectionString = Program.Configuration["Storage:ConnectionString"];
+            _connectionString = Program.Configuration["ConnectionString"];
             TableName = Program.Configuration[tableName];
 
             IsAvailable = !string.IsNullOrEmpty(_connectionString) && !string.IsNullOrEmpty(TableName);

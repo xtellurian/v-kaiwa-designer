@@ -9,7 +9,7 @@ namespace V_KAIWA_Designer.Repository
 {
     public class TableStoreNpcRepository : TableStoreRepository<NpcTableEntity>, INpcRepository
     {
-        public TableStoreNpcRepository() : base("Storage:NpcTableName")
+        public TableStoreNpcRepository() : base("NpcTableName")
         {
         }
 

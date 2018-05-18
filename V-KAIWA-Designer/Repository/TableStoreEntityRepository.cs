@@ -8,7 +8,7 @@ namespace V_KAIWA_Designer.Repository
 {
     public class TableStoreEntityRepository: TableStoreRepository<LuisEntityTableEntity> , IEntityRepository
     {
-        public TableStoreEntityRepository(): base("Storage:EntityTableName")
+        public TableStoreEntityRepository(): base("EntityTableName")
         {
         }
 

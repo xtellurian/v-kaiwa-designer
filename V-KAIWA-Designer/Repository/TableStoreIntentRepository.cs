@@ -9,7 +9,7 @@ namespace V_KAIWA_Designer.Repository
 {
     public class TableStoreIntentRepository : TableStoreRepository<IntentTableEntity>, IIntentRepository
     {
-        public TableStoreIntentRepository() : base("Storage:IntentTableName")
+        public TableStoreIntentRepository() : base("IntentTableName")
         {
         }
 
