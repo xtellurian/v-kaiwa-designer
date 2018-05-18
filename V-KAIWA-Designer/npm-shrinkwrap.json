@@ -55,6 +55,15 @@
         "@types/react-router": "4.0.12"
       }
     },
+    "@types/react-tagsinput": {
+      "version": "3.19.2",
+      "resolved": "https://registry.npmjs.org/@types/react-tagsinput/-/react-tagsinput-3.19.2.tgz",
+      "integrity": "sha512-FjQdsG2T0n/M0AaWcRYhHXYPT+EDkPklaAVBahjYDOvQ7lRArr/DUXKYZhXJkb4yVqQe80K9HtfB/hqJRZ+I8w==",
+      "dev": true,
+      "requires": {
+        "@types/react": "15.0.35"
+      }
+    },
     "@types/webpack-env": {
       "version": "1.13.0",
       "resolved": "https://registry.npmjs.org/@types/webpack-env/-/webpack-env-1.13.0.tgz",
@@ -4211,6 +4220,26 @@
         "prop-types": "15.5.10"
       }
     },
+    "react-autosuggest": {
+      "version": "9.3.4",
+      "resolved": "https://registry.npmjs.org/react-autosuggest/-/react-autosuggest-9.3.4.tgz",
+      "integrity": "sha512-vcAsZw+6zkjimni4aun1tvuzVCGilmFihAgF8yCeVm/p82ssGgtQb0pnNCcEBcPzPTLJjQc2O8dLJidoOyjlcA==",
+      "requires": {
+        "prop-types": "15.5.10",
+        "react-autowhatever": "10.1.1",
+        "shallow-equal": "1.0.0"
+      }
+    },
+    "react-autowhatever": {
+      "version": "10.1.1",
+      "resolved": "https://registry.npmjs.org/react-autowhatever/-/react-autowhatever-10.1.1.tgz",
+      "integrity": "sha512-fcwjDnk1zKMYoJyKmEukw8eWJlwT6UVKZagY+Lfhj79Nx0D8Brj38ZLNtQOFrRLAZrIA+QX4UUjW0MUISqT9OA==",
+      "requires": {
+        "prop-types": "15.5.10",
+        "react-themeable": "1.1.0",
+        "section-iterator": "2.0.0"
+      }
+    },
     "react-deep-force-update": {
       "version": "2.0.1",
       "resolved": "https://registry.npmjs.org/react-deep-force-update/-/react-deep-force-update-2.0.1.tgz",
@@ -4300,6 +4329,26 @@
         "loose-envify": "1.3.1",
         "prop-types": "15.5.10",
         "react-router": "4.1.1"
+      }
+    },
+    "react-tagsinput": {
+      "version": "3.19.0",
+      "resolved": "https://registry.npmjs.org/react-tagsinput/-/react-tagsinput-3.19.0.tgz",
+      "integrity": "sha512-ni+/qnZrYrvLg83LtTFHErKy1KQHL0fi0Y6C5jgC1dNUePE9cS/OlQ4XH6JRSjv9GGoeVE0R/ujSBaS1uzCRYQ=="
+    },
+    "react-themeable": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/react-themeable/-/react-themeable-1.1.0.tgz",
+      "integrity": "sha1-fURm3ZsrX6dQWHJ4JenxUro3mg4=",
+      "requires": {
+        "object-assign": "3.0.0"
+      },
+      "dependencies": {
+        "object-assign": {
+          "version": "3.0.0",
+          "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-3.0.0.tgz",
+          "integrity": "sha1-m+3VygiXlJvKR+f/QIBi1Un1h/I="
+        }
       }
     },
     "read-pkg": {
@@ -4567,6 +4616,11 @@
         }
       }
     },
+    "section-iterator": {
+      "version": "2.0.0",
+      "resolved": "https://registry.npmjs.org/section-iterator/-/section-iterator-2.0.0.tgz",
+      "integrity": "sha1-v0RNev7rlK1Dw5rS+yYVFifMuio="
+    },
     "semver": {
       "version": "5.3.0",
       "resolved": "https://registry.npmjs.org/semver/-/semver-5.3.0.tgz",
@@ -4619,6 +4673,11 @@
       "requires": {
         "inherits": "2.0.3"
       }
+    },
+    "shallow-equal": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/shallow-equal/-/shallow-equal-1.0.0.tgz",
+      "integrity": "sha1-UI0YOLPeWQq4dXsBGyXkMJAJRfc="
     },
     "snapdragon": {
       "version": "0.8.1",
