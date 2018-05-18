@@ -13,7 +13,8 @@
     <Company>V-KAIWA</Company>
     <Authors>Rian Finnegan</Authors>
     <RootNamespace>V_KAIWA_Designer</RootNamespace>
-    <ApplicationIcon>wwwroot\vkaiwa_icon.ico</ApplicationIcon>
+    <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
+    <AssemblyName>V-KAIWA-Designer</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
